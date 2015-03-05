@@ -37,6 +37,10 @@ pre code {
     margin-bottom: 20px;
 }
 
+#header .brand {
+    margin-right: 1em;
+}
+
 #header #search {
     text-align: right;
 }
