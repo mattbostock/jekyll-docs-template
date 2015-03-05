@@ -27,6 +27,11 @@ code {
     color: inherit;
 }
 
+pre code {
+    padding: 1em;
+    display: block;
+}
+
 #header {
     border-bottom: 1px solid #eee;
     margin-bottom: 20px;
