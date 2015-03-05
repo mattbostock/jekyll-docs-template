@@ -30,6 +30,10 @@ future: true
 # Exclude non-site files
 exclude: ['bin', 'README.md']
 
+defaults:
+  - values:
+      layout: default
+
 # Use the redcarpet Markdown renderer
 markdown: redcarpet
 redcarpet:
