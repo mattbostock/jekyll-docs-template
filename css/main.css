@@ -23,6 +23,14 @@ code {
     margin-bottom: 20px;
 }
 
+#header #search {
+    text-align: right;
+}
+
+#header #search form {
+    margin: 10px 0 0;
+}
+
 #header a:hover {
     text-decoration: none;
 }

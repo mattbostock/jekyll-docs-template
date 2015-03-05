@@ -11,13 +11,44 @@
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css">
         <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
+        <script src="/js/search.min.js" type="text/javascript" charset="utf-8"></script>
     </head>
     <body>
+        <!-- Search code from https://github.com/slashdotdash/jekyll-lunr-js-search -->
+        <script type="text/javascript">
+            $(function() {
+                $('#search-query').lunrSearch({
+                    indexUrl: '/search.json',             // URL of the `search.json` index data for your site
+                    results:  '#search-results',          // jQuery selector for the search results container
+                    entries:  '.entries',                 // jQuery selector for the element to contain the results list, must be a child of the results element above.
+                    template: '#search-results-template'  // jQuery selector for the Mustache.js template
+                });
+            });
+        </script>
+
+        {% raw %}
+        <script id="search-results-template" type="text/mustache">
+          {{#entries}}
+            <article>
+              <h3>
+                {{#date}}<small><time datetime="{{pubdate}}" pubdate>{{displaydate}}</time></small>{{/date}}
+                <a href="{{url}}">{{title}}</a>
+              </h3>
+            </article>
+          {{/entries}}
+        </script>
+        {% endraw %}
+        <!-- End of search code -->
 
         <div class="container">
-            <div class=row-fluid>
-                <div id=header class=span12>
+            <div class=row-fluid id=header>
+                <div id=site-title class=span8>
                     {% include header.html %}
+                </div>
+                <div id=search class=span4>
+                  <form action="#" method="get">
+                    <input type="text" id="search-query" name="q" placeholder="Search" autocomplete="off">
+                  </form>
                 </div>
             </div>
 
@@ -27,6 +58,7 @@
                 </div>
 
                 <div id=content class=span10>
+                    {% include search_results.html %}
                     {{ content }}
                 </div>
             </div>
